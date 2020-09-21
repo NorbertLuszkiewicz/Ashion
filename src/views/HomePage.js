@@ -28,8 +28,6 @@ const StyledHeading = styled(Heading)`
 const Benefits = styled.section`
   display: flex;
   flex-direction: column;
-  width: 90%;
-  margin: auto;
 `;
 
 const IconWrapper = styled.div`

@@ -7,8 +7,6 @@ import Label from 'components/atoms/Label/Label';
 import Button from 'components/atoms/Button/Button';
 
 const Wrapper = styled.div`
-  width: 90%;
-  margin: auto;
   position: relative;
   margin-bottom: 10px;
   display: flex;

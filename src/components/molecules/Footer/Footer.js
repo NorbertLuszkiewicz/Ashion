@@ -10,7 +10,6 @@ import payment4 from 'assets/payment/payment-4.png';
 import payment5 from 'assets/payment/payment-5.png';
 
 const Wrapper = styled.section`
-  width: 90%;
   margin: 50px auto;
 `;
 
@@ -47,7 +46,6 @@ const StyledHeading = styled(Heading)`
 const StyledFooter = styled.footer`
   position: relative;
   margin: 10px auto;
-  width: 90%;
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.xs};
   padding-top: 15px;

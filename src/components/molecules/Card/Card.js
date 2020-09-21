@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 100vw;
+  margin: 0 0 10px -5vw;
   height: 300px;
   background-image: url(${({ photo }) => photo});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
