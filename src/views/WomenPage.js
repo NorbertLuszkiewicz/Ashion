@@ -33,7 +33,7 @@ const StyledForm = styled.form`
 const WomenPage = () => {
   const [category, setCategory] = useState('all');
 
-  const [minPrice, setMinPrice] = useState(0);
+  const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState(99);
 
   console.log(minPrice, maxPrice, category);
@@ -127,9 +127,8 @@ const WomenPage = () => {
               <StyledNumberInput
                 type="number"
                 placeholder="0"
-                onChange={(e) => {
-                  minPrice === '' ? setMinPrice(0) : setMinPrice(e.target.value);
-                }}
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
               />
             </StyledLabel>
             <StyledLabel>
@@ -137,9 +136,8 @@ const WomenPage = () => {
               <StyledNumberInput
                 type="number"
                 placeholder="99"
-                onChange={(e) => {
-                  maxPrice <= 10 ? setMaxPrice(99) : setMaxPrice(e.target.value);
-                }}
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
               />
             </StyledLabel>
           </Form>
