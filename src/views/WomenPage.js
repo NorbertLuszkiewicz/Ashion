@@ -5,9 +5,23 @@ import { women } from 'data';
 import ProductItem from 'components/molecules/ProductItem/ProductItem';
 import Heading from 'components/atoms/Heading/Heading';
 
-const CategoriesWrapper = styled.div``;
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  margin: 0 15px;
+`;
 
-const PriceWrapper = styled.div``;
+const Form = styled.form`
+  display: flex;
+  margin: auto;
+`;
+
+const StyledNumberInput = styled.input`
+  width: 100%;
+  margin: 0 0px 30px;
+  font-size: ${({ theme }) => theme.fontSize.s};
+`;
 
 const StyledForm = styled.form`
   display: grid;
@@ -19,14 +33,24 @@ const StyledForm = styled.form`
 const WomenPage = () => {
   const [category, setCategory] = useState('all');
 
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(99);
+
+  console.log(minPrice, maxPrice, category);
+
   return (
     <PageTemplate>
       <div>
-        <CategoriesWrapper>
+        <div>
           <Heading>CATEGORIES</Heading>
           <StyledForm defaultValue="all">
             <label>
-              <input type="radio" name="category" value="all" onClick={() => setCategory('all')} />
+              <input
+                type="radio"
+                name="category"
+                value="all"
+                onClick={(e) => setCategory(e.target.value)}
+              />
               {'ALL'}
             </label>
             <label>
@@ -34,16 +58,26 @@ const WomenPage = () => {
                 type="radio"
                 name="category"
                 value="jeans"
-                onClick={() => setCategory('jeans')}
+                onClick={(e) => setCategory(e.target.value)}
               />
               {'JEANS'}
             </label>
             <label>
-              <input type="radio" name="category" value="hat" onClick={() => setCategory('hat')} />
+              <input
+                type="radio"
+                name="category"
+                value="hat"
+                onClick={(e) => setCategory(e.target.value)}
+              />
               {'HAT'}
             </label>
             <label>
-              <input type="radio" name="category" value="bag" onClick={() => setCategory('bag')} />
+              <input
+                type="radio"
+                name="category"
+                value="bag"
+                onClick={(e) => setCategory(e.target.value)}
+              />
               {'BAG'}
             </label>
             <label>
@@ -51,7 +85,7 @@ const WomenPage = () => {
                 type="radio"
                 name="category"
                 value="shoes"
-                onClick={() => setCategory('shoes')}
+                onClick={(e) => setCategory(e.target.value)}
               />
               {'SHOES'}
             </label>
@@ -60,7 +94,7 @@ const WomenPage = () => {
                 type="radio"
                 name="category"
                 value="scraf"
-                onClick={() => setCategory('scraf')}
+                onClick={(e) => setCategory(e.target.value)}
               />
               {'SCRAF'}
             </label>
@@ -69,7 +103,7 @@ const WomenPage = () => {
                 type="radio"
                 name="category"
                 value="jacket"
-                onClick={() => setCategory('jacket')}
+                onClick={(e) => setCategory(e.target.value)}
               />
               {'JACKET'}
             </label>
@@ -78,37 +112,61 @@ const WomenPage = () => {
                 type="radio"
                 name="category"
                 value="rings"
-                onClick={() => setCategory('rings')}
+                onClick={(e) => setCategory(e.target.value)}
               />
               {'RINGS'}
             </label>
           </StyledForm>
-        </CategoriesWrapper>
-        <PriceWrapper>
+        </div>
+        <div>
           <Heading>PRICE</Heading>
-          <form>
-            <input type="number" placeholder="0" />
-            <input type="number" placeholder="99" />
-          </form>
-        </PriceWrapper>
+          <Form>
+            <StyledLabel>
+              {' '}
+              MINIMAL PRICE
+              <StyledNumberInput
+                type="number"
+                placeholder="0"
+                onChange={(e) => {
+                  minPrice === '' ? setMinPrice(0) : setMinPrice(e.target.value);
+                }}
+              />
+            </StyledLabel>
+            <StyledLabel>
+              MAXIMAL PRICE
+              <StyledNumberInput
+                type="number"
+                placeholder="99"
+                onChange={(e) => {
+                  maxPrice <= 10 ? setMaxPrice(99) : setMaxPrice(e.target.value);
+                }}
+              />
+            </StyledLabel>
+          </Form>
+        </div>
       </div>
 
       <div>
         {category === 'all'
-          ? women.map((item) => {
-              return (
-                <ProductItem
-                  title={item.title}
-                  price={item.price}
-                  photo={item.photo}
-                  color={item.color}
-                  label={item.label}
-                  key={item.photo}
-                />
-              );
-            })
+          ? women
+              .filter((item) => item.cost >= minPrice && item.cost <= maxPrice)
+              .map((item) => {
+                return (
+                  <ProductItem
+                    title={item.title}
+                    price={item.price}
+                    photo={item.photo}
+                    color={item.color}
+                    label={item.label}
+                    key={item.photo}
+                  />
+                );
+              })
           : women
-              .filter((item) => item.category === category)
+              .filter(
+                (item) =>
+                  item.category === category && item.cost >= minPrice && item.cost <= maxPrice,
+              )
               .map((item) => {
                 return (
                   <ProductItem
