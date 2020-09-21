@@ -107,30 +107,35 @@ export const women = [
     color: 'green',
     label: 'NEW',
     category: 'jacket',
+    cost: 99,
   },
   {
     title: 'Basic bag',
     price: '$69.0',
     photo: women2,
     category: 'bag',
+    cost: 69,
   },
   {
     title: 'Pleated dress',
     price: '$59.0',
     photo: women3,
     category: 'dress',
+    cost: 59,
   },
   {
     title: 'Dark wash Xavi jeans',
     price: '$59.0',
     photo: women4,
     category: 'jeans',
+    cost: 59,
   },
   {
     title: 'Ankle-cuff sandals',
     price: '$59.0',
     photo: women5,
     category: 'shoes',
+    cost: 59,
   },
   {
     title: 'Rucksack',
@@ -139,12 +144,14 @@ export const women = [
     color: 'red',
     label: 'SALE',
     category: 'bag',
+    cost: 49,
   },
   {
     title: 'Pendant earrings',
     price: '$29.0',
     photo: women7,
     category: 'rings',
+    cost: 29,
   },
   {
     title: 'Scarf',
@@ -153,12 +160,14 @@ export const women = [
     color: 'red',
     label: 'SALE',
     category: 'scraf',
+    cost: 49,
   },
   {
     title: 'Long boots',
     price: '$69.0',
     photo: women9,
     category: 'shoes',
+    cost: 69,
   },
   {
     title: 'Winter hat',
@@ -167,5 +176,6 @@ export const women = [
     color: 'red',
     label: 'SALE',
     category: 'hat',
+    cost: 29,
   },
 ];
