@@ -63,9 +63,5 @@
     "url": "git+https://github.com/NorbertLuszkiewicz/Ashion.git"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/NorbertLuszkiewicz/Ashion/issues"
-  },
-  "homepage": "https://github.com/NorbertLuszkiewicz/Ashion#readme"
+  "license": "ISC"
 }
