@@ -11,4 +11,12 @@ app.get('/api/cards', (res, req) => {
   res.setEncoding(cards);
 });
 
+app.get('/api/best-products', (res, req) => {
+  res.setEncoding(bestProducts);
+});
+
+app.get('/api/women-products', (res, req) => {
+  res.setEncoding(womenProducts);
+});
+
 app.listen(PORT, () => console.log('server'));
