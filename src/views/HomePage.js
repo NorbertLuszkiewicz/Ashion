@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import PageTemplate from 'templates/PageTemplates';
 import Card from 'components/molecules/Card/Card';
 import ProductItem from 'components/molecules/ProductItem/ProductItem';
 import Heading from 'components/atoms/Heading/Heading';
-import { cards, products } from 'data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faMoneyBillAlt, faLifeRing, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import photo1 from 'assets/categories/category-1.jpg';
@@ -45,6 +45,25 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `;
 
 const HomePage = () => {
+  const [cards, setCards] = useState([]);
+  const [bestProducts, setBestProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data: dataCards } = await axios.get('/api/cards');
+      const { data: dataProducts } = await axios.get('/api/best-products');
+
+      setCards(dataCards);
+      setBestProducts(dataProducts);
+    };
+    fetchData();
+    return () => {
+      //
+    };
+  }, []);
+
+  console.log(cards, bestProducts);
+
   return (
     <PageTemplate>
       <Card
@@ -69,7 +88,7 @@ const HomePage = () => {
 
       <article>
         <StyledHeading>NEW PRODUCT</StyledHeading>;
-        {products.map((product) => {
+        {bestProducts.map((product) => {
           return (
             <ProductItem
               title={product.title}

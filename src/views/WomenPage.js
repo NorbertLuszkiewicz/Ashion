@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import PageTemplate from 'templates/PageTemplates';
-import { women } from 'data';
 import ProductItem from 'components/molecules/ProductItem/ProductItem';
 import Heading from 'components/atoms/Heading/Heading';
 
@@ -32,11 +32,21 @@ const StyledForm = styled.form`
 
 const WomenPage = () => {
   const [category, setCategory] = useState('all');
-
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState(99);
 
-  console.log(minPrice, maxPrice, category);
+  const [womenProducts, setWomenProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get('/api/women-products');
+      setWomenProduct(data);
+    };
+    fetchData();
+    return () => {
+      //
+    };
+  }, []);
 
   return (
     <PageTemplate>
@@ -146,7 +156,7 @@ const WomenPage = () => {
 
       <div>
         {category === 'all'
-          ? women
+          ? womenProducts
               .filter((item) => item.cost >= minPrice && item.cost <= maxPrice)
               .map((item) => {
                 return (
@@ -160,7 +170,7 @@ const WomenPage = () => {
                   />
                 );
               })
-          : women
+          : womenProducts
               .filter(
                 (item) =>
                   item.category === category && item.cost >= minPrice && item.cost <= maxPrice,
