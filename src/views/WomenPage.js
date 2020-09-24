@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { womenProductsList } from 'actions';
 import PageTemplate from 'templates/PageTemplates';
 import ProductItem from 'components/molecules/ProductItem/ProductItem';
 import Heading from 'components/atoms/Heading/Heading';
@@ -35,20 +36,19 @@ const WomenPage = () => {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState(99);
 
-  const [womenProducts, setWomenProduct] = useState([]);
+  const womenProductList = useSelector((state) => state.womenProductList);
+  const { products, loading, error } = womenProductList;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get('/api/women-products');
-      setWomenProduct(data);
-    };
-    fetchData();
-    return () => {
-      //
-    };
+    dispatch(womenProductsList());
   }, []);
 
-  return (
+  return loading ? (
+    <div>LOADING ...</div>
+  ) : error ? (
+    <div>ERROR</div>
+  ) : (
     <PageTemplate>
       <div>
         <div>
@@ -156,7 +156,7 @@ const WomenPage = () => {
 
       <div>
         {category === 'all'
-          ? womenProducts
+          ? products
               .filter((item) => item.cost >= minPrice && item.cost <= maxPrice)
               .map((item) => {
                 return (
@@ -170,7 +170,7 @@ const WomenPage = () => {
                   />
                 );
               })
-          : womenProducts
+          : products
               .filter(
                 (item) =>
                   item.category === category && item.cost >= minPrice && item.cost <= maxPrice,
