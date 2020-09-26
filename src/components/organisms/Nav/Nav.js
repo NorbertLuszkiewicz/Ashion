@@ -128,7 +128,7 @@ const Nav = () => {
             Contact
           </Item>
         </ItemList>
-        <ItemBasket to={routes.home} as={NavLink}>
+        <ItemBasket to={routes.cart} as={NavLink}>
           <FontAwesomeIcon icon={faShoppingBasket} />
         </ItemBasket>
       </MoblieWrapper>
