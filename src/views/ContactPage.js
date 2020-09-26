@@ -6,11 +6,6 @@ import PageTemplate from 'templates/PageTemplates';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMap, faPhone, faLifeRing } from '@fortawesome/free-solid-svg-icons';
 
-const Wrapper = styled.div`
-  width: 90%;
-  margin: auto;
-`;
-
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   margin-right: 7px;
   color: ${({ theme }) => theme.mainRed};
@@ -26,9 +21,9 @@ const NameWrapper = styled.div`
   align-items: center;
 `;
 
-const ContactPage = () => (
-  <PageTemplate>
-    <Wrapper>
+const ContactPage = () => {
+  return (
+    <PageTemplate>
       <Heading>CONTACT INFO</Heading>
       <div>
         <NameWrapper>
@@ -53,8 +48,8 @@ const ContactPage = () => (
         </NameWrapper>
         <StyledParagraph>Support.photography@gmail.com</StyledParagraph>
       </div>
-    </Wrapper>
-  </PageTemplate>
-);
+    </PageTemplate>
+  );
+};
 
 export default ContactPage;
