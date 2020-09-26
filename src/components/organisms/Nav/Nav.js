@@ -121,7 +121,7 @@ const Nav = () => {
           <Item to={routes.women} as={NavLink}>
             Women's
           </Item>
-          <Item to={routes.men} as={NavLink}>
+          <Item to={routes.women} as={NavLink}>
             Men's
           </Item>
           <Item to={routes.contact} as={NavLink}>

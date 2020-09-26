@@ -1,6 +1,6 @@
 export const routes = {
   home: '/',
-  men: '/men',
+  cart: '/cart',
   women: '/women',
   contact: '/contact',
 };

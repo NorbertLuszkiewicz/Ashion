@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import UserPageTemplate from 'templates/UserPageTemplate';
 import { routes } from 'routes';
 import HomePage from './HomePage';
-import MenPage from './MenPage';
 import WomenPage from './WomenPage';
 import ContactPage from './ContactPage';
 
@@ -12,7 +11,6 @@ const Root = () => (
     <UserPageTemplate>
       <Switch>
         <Route exact path={routes.home} component={HomePage} />
-        <Route exact path={routes.men} component={MenPage} />
         <Route exact path={routes.women} component={WomenPage} />
         <Route exact path={routes.contact} component={ContactPage} />
       </Switch>
