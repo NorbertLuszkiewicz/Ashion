@@ -9,6 +9,9 @@ import {
   BEST_PRODUCT_LIST_REQUEST,
   BEST_PRODUCT_LIST_SUCCESS,
   BEST_PRODUCT_LIST_FAILURE,
+  CART_LIST_REQUEST,
+  CART_LIST_SUCCESS,
+  CART_LIST_FAILURE,
 } from 'reducers';
 
 export const cardsList = () => async (dispatch) => {
@@ -38,5 +41,15 @@ export const womenProductsList = () => async (dispatch) => {
     dispatch({ type: WOMEN_PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: WOMEN_PRODUCT_LIST_FAILURE, payload: error.message });
+  }
+};
+
+export const cartList = () => async (dispatch) => {
+  try {
+    dispatch({ type: CART_LIST_REQUEST });
+    const { data } = await axios.get('/api/carts');
+    dispatch({ type: CART_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: CART_LIST_FAILURE, payload: error.message });
   }
 };

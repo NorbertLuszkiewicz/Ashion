@@ -25,6 +25,24 @@ export const cards = [
   },
 ];
 
+export const cart = [
+  {
+    title: 'Basic bag',
+    price: '$69.0',
+    photo: 'https://i.imgur.com/OVuOAQE.jpg',
+  },
+  {
+    title: 'Hooded jacket',
+    price: '$99.0',
+    photo: 'https://i.imgur.com/VMxXFFx.jpg',
+  },
+  {
+    title: 'Long boots',
+    price: '$69.0',
+    photo: 'https://i.imgur.com/pazrz6W.jpg',
+  },
+];
+
 export const bestProducts = [
   {
     title: 'Buttons tweed blazer',
