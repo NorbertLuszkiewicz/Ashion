@@ -12,6 +12,9 @@ import {
   CART_LIST_REQUEST,
   CART_LIST_SUCCESS,
   CART_LIST_FAILURE,
+  DETAILS_PRODUCT_REQUEST,
+  DETAILS_PRODUCT_SUCCESS,
+  DETAILS_PRODUCT_FAILURE,
 } from 'reducers';
 
 export const cardsList = () => async (dispatch) => {
@@ -51,5 +54,15 @@ export const cartList = () => async (dispatch) => {
     dispatch({ type: CART_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: CART_LIST_FAILURE, payload: error.message });
+  }
+};
+
+export const detailsProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch({ type: DETAILS_PRODUCT_REQUEST, payload: productId });
+    const { data } = await axios.get(`/api/product/${productId}`);
+    dispatch({ type: DETAILS_PRODUCT_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: DETAILS_PRODUCT_FAILURE, payload: error.message });
   }
 };

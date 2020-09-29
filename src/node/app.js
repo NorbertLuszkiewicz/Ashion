@@ -24,4 +24,17 @@ app.get('/api/carts', (req, res) => {
   res.send(cart);
 });
 
+app.get('/api/product/:id', (req, res) => {
+  const productId = req.params.id;
+  const womenProduct = womenProducts.find((x) => x._id === productId);
+  const bestProduct = bestProducts.find((x) => x._id === productId);
+  if (womenProduct) {
+    res.send(womenProduct);
+  } else if (bestProduct) {
+    res.send(bestProduct);
+  } else {
+    res.status(404).send({ msg: 'Product Not Found' });
+  }
+});
+
 app.listen(PORT, () => console.log('server'));
