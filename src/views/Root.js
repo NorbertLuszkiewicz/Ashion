@@ -4,6 +4,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import { routes } from 'routes';
 import HomePage from './HomePage';
 import CartPage from './CartPage';
+import ProductPage from './ProductPage';
 import WomenPage from './WomenPage';
 import ContactPage from './ContactPage';
 
@@ -15,6 +16,7 @@ const Root = () => (
         <Route exact path={routes.cart} component={CartPage} />
         <Route exact path={routes.women} component={WomenPage} />
         <Route exact path={routes.contact} component={ContactPage} />
+        <Route exact path={routes.product} component={ProductPage} />
       </Switch>
     </UserPageTemplate>
   </BrowserRouter>
