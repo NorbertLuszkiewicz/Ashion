@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { bestProductsList, cardsList } from 'actions';
 import PageTemplate from 'templates/PageTemplates';
 import Card from 'components/molecules/Card/Card';
-import ProductItem from 'components/molecules/ProductItem/ProductItem';
+import ProductItem from 'components/organisms/ProductItem/ProductItem';
 import Heading from 'components/atoms/Heading/Heading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faMoneyBillAlt, faLifeRing, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
@@ -55,7 +55,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(bestProductsList());
     dispatch(cardsList());
-  }, []);
+  }, [dispatch]);
 
   return (
     productsLoading,
@@ -88,7 +88,7 @@ const HomePage = () => {
         })}
 
         <article>
-          <StyledHeading>NEW PRODUCT</StyledHeading>;
+          <StyledHeading>NEW PRODUCT</StyledHeading>
           {bestProducts.map((product) => {
             return (
               <ProductItem
@@ -97,6 +97,7 @@ const HomePage = () => {
                 photo={product.photo}
                 color={product.color}
                 label={product.label}
+                id={product.id}
                 key={product.photo}
               />
             );
