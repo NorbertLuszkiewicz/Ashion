@@ -14,6 +14,10 @@ export const CART_LIST_REQUEST = 'CART_LIST_REQUEST';
 export const CART_LIST_SUCCESS = 'CART_LIST_SUCCESS';
 export const CART_LIST_FAILURE = 'CART_LIST_FAILURE';
 
+export const DETAILS_PRODUCT_REQUEST = 'DETAILS_PRODUCT_REQUEST';
+export const DETAILS_PRODUCT_SUCCESS = 'DETAILS_PRODUCT_SUCCESS';
+export const DETAILS_PRODUCT_FAILURE = 'DETAILS_PRODUCT_FAILURE';
+
 export function bestProductListReducer(state = { bestProducts: [] }, action) {
   switch (action.type) {
     case BEST_PRODUCT_LIST_REQUEST:
@@ -60,6 +64,19 @@ export function cartListReducer(state = { products: [] }, action) {
     case CART_LIST_SUCCESS:
       return { loading: false, products: action.payload };
     case CART_LIST_FAILURE:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+}
+
+export function productDetailsReducer(state = { product: {} }, action) {
+  switch (action.type) {
+    case DETAILS_PRODUCT_REQUEST:
+      return { loading: true };
+    case DETAILS_PRODUCT_SUCCESS:
+      return { loading: false, product: action.payload };
+    case DETAILS_PRODUCT_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
