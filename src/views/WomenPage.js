@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { womenProductsList } from 'actions';
 import PageTemplate from 'templates/PageTemplates';
-import ProductItem from 'components/molecules/ProductItem/ProductItem';
+import ProductItem from 'components/organisms/ProductItem/ProductItem';
 import Heading from 'components/atoms/Heading/Heading';
 
 const StyledLabel = styled.label`
@@ -42,7 +42,7 @@ const WomenPage = () => {
 
   useEffect(() => {
     dispatch(womenProductsList());
-  }, []);
+  }, [dispatch]);
 
   return loading ? (
     <div>LOADING ...</div>
@@ -166,6 +166,7 @@ const WomenPage = () => {
                     photo={item.photo}
                     color={item.color}
                     label={item.label}
+                    id={item.id}
                     key={item.photo}
                   />
                 );

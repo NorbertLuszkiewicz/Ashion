@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import PageTemplate from 'templates/PageTemplates';
 import Paragraph from '../components/atoms/Paragraph/Paragraph';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { detailsProduct } from 'actions';
 
 const Wrapper = styled.main`
   display: grid;
+  margin-top: 20px;
 `;
 
 const TitleWrapper = styled.main`
@@ -59,16 +62,28 @@ const Created = styled(Paragraph)`
   color: #888;
 `;
 
-const ProductPage = () => {
-  return (
+const ProductPage = (props) => {
+  const productDetails = useSelector((state) => state.productDetails);
+  const { product, loading, error } = productDetails;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(detailsProduct(props.match.params.id));
+  }, [dispatch, props.match.params.id]);
+
+  return loading ? (
+    <div>LOADING ...</div>
+  ) : error ? (
+    <div>ERROR</div>
+  ) : (
     <PageTemplate>
       <Wrapper>
         <StyledSection>
-          <StyledImg src="https://i.imgur.com/VMxXFFx.jpg" alt="Black Hooded jacket" />
+          <StyledImg src={product.photo} alt="Black Hooded jacket" />
           <TitleWrapper>
-            <Title>Hooded jacket</Title>
+            <Title>{product.title}</Title>
             <Price>
-              Price:<StyledStrong> $99.0</StyledStrong>
+              Price:<StyledStrong>{product.price}</StyledStrong>
             </Price>
             <StyledButton>Add to cart</StyledButton>
           </TitleWrapper>

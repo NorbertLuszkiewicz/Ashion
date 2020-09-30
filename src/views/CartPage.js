@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartList } from 'actions';
@@ -33,7 +33,7 @@ const CartPage = () => {
 
   useEffect(() => {
     dispatch(cartList());
-  }, []);
+  }, [dispatch]);
   return loading ? (
     <div>LOADING ...</div>
   ) : error ? (
