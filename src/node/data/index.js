@@ -50,26 +50,31 @@ export const bestProducts = [
     photo: 'https://i.imgur.com/6Tq8GX1.jpg',
     color: 'green',
     label: 'NEW',
+    id: 1,
   },
   {
     title: 'Flowy striped skirt',
     price: '$49.0',
     photo: 'https://i.imgur.com/pblC7oL.jpg',
+    id: 2,
   },
   {
     title: 'Lite slim dress',
     price: '$59.0',
     photo: 'https://i.imgur.com/BaGqC8G.jpg',
+    id: 3,
   },
   {
     title: 'Slim striped pocket shirt',
     price: '$59.0',
     photo: 'https://i.imgur.com/2zriZTk.jpg',
+    id: 4,
   },
   {
     title: 'Fit micro corduroy shirt',
     price: '$59.0',
     photo: 'https://i.imgur.com/AJQDDAw.jpg',
+    id: 5,
   },
   {
     title: 'Tropical Kimono',
@@ -77,11 +82,13 @@ export const bestProducts = [
     photo: 'https://i.imgur.com/Tj3uPPh.jpg',
     color: 'red',
     label: 'SALE',
+    id: 6,
   },
   {
     title: 'White bluse',
     price: '$59.0',
     photo: 'https://i.imgur.com/HfiIhUZ.jpg',
+    id: 7,
   },
   {
     title: 'Tropical shirt',
@@ -89,6 +96,7 @@ export const bestProducts = [
     photo: 'https://i.imgur.com/lfeVXUK.jpg',
     color: 'red',
     label: 'SALE',
+    id: 8,
   },
 ];
 
@@ -101,6 +109,7 @@ export const womenProducts = [
     label: 'NEW',
     category: 'jacket',
     cost: 99,
+    id: 9,
   },
   {
     title: 'Basic bag',
@@ -108,6 +117,7 @@ export const womenProducts = [
     photo: 'https://i.imgur.com/OVuOAQE.jpg',
     category: 'bag',
     cost: 69,
+    id: 10,
   },
   {
     title: 'Pleated dress',
@@ -115,6 +125,7 @@ export const womenProducts = [
     photo: 'https://i.imgur.com/FB9LmUL.jpg',
     category: 'dress',
     cost: 59,
+    id: 11,
   },
   {
     title: 'Dark wash Xavi jeans',
@@ -122,6 +133,7 @@ export const womenProducts = [
     photo: 'https://i.imgur.com/7gT7Y3x.jpg',
     category: 'jeans',
     cost: 59,
+    id: 12,
   },
   {
     title: 'Ankle-cuff sandals',
@@ -129,6 +141,7 @@ export const womenProducts = [
     photo: 'https://i.imgur.com/WMg2WRk.jpg',
     category: 'shoes',
     cost: 59,
+    id: 13,
   },
   {
     title: 'Rucksack',
@@ -138,6 +151,7 @@ export const womenProducts = [
     label: 'SALE',
     category: 'bag',
     cost: 49,
+    id: 14,
   },
   {
     title: 'Pendant earrings',
@@ -145,6 +159,7 @@ export const womenProducts = [
     photo: 'https://i.imgur.com/980Zhtc.jpg',
     category: 'rings',
     cost: 29,
+    id: 15,
   },
   {
     title: 'Scarf',
@@ -154,6 +169,7 @@ export const womenProducts = [
     label: 'SALE',
     category: 'scraf',
     cost: 49,
+    id: 16,
   },
   {
     title: 'Long boots',
@@ -161,6 +177,7 @@ export const womenProducts = [
     photo: 'https://i.imgur.com/pazrz6W.jpg',
     category: 'shoes',
     cost: 69,
+    id: 17,
   },
   {
     title: 'Winter hat',
@@ -170,5 +187,6 @@ export const womenProducts = [
     label: 'SALE',
     category: 'hat',
     cost: 29,
+    id: 18,
   },
 ];
