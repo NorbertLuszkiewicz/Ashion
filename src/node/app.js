@@ -26,8 +26,8 @@ app.get('/api/carts', (req, res) => {
 
 app.get('/api/product/:id', (req, res) => {
   const productId = req.params.id;
-  const womenProduct = womenProducts.find((x) => x._id === productId);
-  const bestProduct = bestProducts.find((x) => x._id === productId);
+  const womenProduct = womenProducts.find((x) => x.id === Number(productId));
+  const bestProduct = bestProducts.find((x) => x.id === Number(productId));
   if (womenProduct) {
     res.send(womenProduct);
   } else if (bestProduct) {

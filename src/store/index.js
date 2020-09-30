@@ -4,6 +4,7 @@ import {
   womenProductListReducer,
   cardListReducer,
   cartListReducer,
+  productDetailsReducer,
 } from 'reducers';
 import thunk from 'redux-thunk';
 
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   womenProductList: womenProductListReducer,
   cardList: cardListReducer,
   cartList: cartListReducer,
+  productDetails: productDetailsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

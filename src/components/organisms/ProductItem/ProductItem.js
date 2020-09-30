@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Label from 'components/atoms/Label/Label';
 import Button from 'components/atoms/Button/Button';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   position: relative;
@@ -68,24 +69,26 @@ const StyledButton = styled(Button)`
   font-weight: bold;
 `;
 
-const ProductItem = ({ title, price, photo, color, label }) => (
-  <Wrapper>
-    <ImgWrapper>
-      <StyledImg src={photo} />
-      <StyledButton>Add to cart</StyledButton>
-    </ImgWrapper>
-    <Label color={color}>{label}</Label>
-    <Title>{title}</Title>
-    <Raiting>
-      <FontAwesomeIcon icon={faStar} />
-      <FontAwesomeIcon icon={faStar} />
-      <FontAwesomeIcon icon={faStar} />
-      <FontAwesomeIcon icon={faStar} />
-      <FontAwesomeIcon icon={faStar} />
-    </Raiting>
-    <Price color={color}>{price}</Price>
-  </Wrapper>
-);
+const ProductItem = ({ title, price, photo, color, label, id }) => {
+  return (
+    <Wrapper>
+      <ImgWrapper to={`/product/${id}`} as={Link}>
+        <StyledImg src={photo} />
+        <StyledButton>Add to cart</StyledButton>
+      </ImgWrapper>
+      <Label color={color}>{label}</Label>
+      <Title>{title}</Title>
+      <Raiting>
+        <FontAwesomeIcon icon={faStar} />
+        <FontAwesomeIcon icon={faStar} />
+        <FontAwesomeIcon icon={faStar} />
+        <FontAwesomeIcon icon={faStar} />
+        <FontAwesomeIcon icon={faStar} />
+      </Raiting>
+      <Price color={color}>{price}</Price>
+    </Wrapper>
+  );
+};
 
 ProductItem.propTypes = {
   title: PropTypes.string.isRequired,
