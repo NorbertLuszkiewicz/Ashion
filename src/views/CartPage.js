@@ -5,6 +5,16 @@ import { cartList } from 'actions';
 import PageTemplate from 'templates/PageTemplates';
 import CartItem from 'components/molecules/CartItem/CartItem';
 
+const StyledButton = styled.button`
+  width: 100%;
+  font-size: ${({ theme }) => theme.fontSize.s};
+  padding: 8px 20px;
+  background: ${({ theme }) => theme.lightGreen};
+  border: none;
+  border-radius: 15px;
+  margin-top: 40px;
+`;
+
 const HeadWrapper = styled.div`
   position: relative;
   padding: 10px 0;
@@ -55,6 +65,7 @@ const CartPage = () => {
           );
         })}
       </section>
+      <StyledButton>Proceed to checkout</StyledButton>
     </PageTemplate>
   );
 };
