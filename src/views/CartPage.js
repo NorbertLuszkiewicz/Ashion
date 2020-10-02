@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { cartList } from 'actions';
+import { addToCart, removeFromCart } from 'actions';
 import PageTemplate from 'templates/PageTemplates';
 import CartItem from 'components/molecules/CartItem/CartItem';
 
@@ -36,31 +36,36 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const CartPage = () => {
-  const productList = useSelector((state) => state.cartList);
-  const { products, loading, error } = productList;
+const CartPage = (props) => {
+  const productId = props.match.params.id;
   const dispatch = useDispatch();
 
+  const cartsList = useSelector((state) => state.cart);
+  const { cartItems } = cartsList;
+  const removeFromCartHandler = (productId) => {
+    dispatch(removeFromCart(productId));
+  };
+
   useEffect(() => {
-    dispatch(cartList());
+    if (productId) {
+      dispatch(addToCart(productId));
+    }
   }, [dispatch]);
-  return loading ? (
-    <div>LOADING ...</div>
-  ) : error ? (
-    <div>ERROR</div>
-  ) : (
+
+  return (
     <PageTemplate>
       <HeadWrapper>
         <Title>Your shoping cart</Title>
       </HeadWrapper>
       <section>
-        {products.map((product) => {
+        {cartItems.map((product) => {
           return (
             <CartItem
               title={product.title}
               price={product.price}
               photo={product.photo}
-              key={product.photo}
+              key={product.id}
+              remote={() => removeFromCartHandler(product.id)}
             />
           );
         })}
