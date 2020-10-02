@@ -37,4 +37,4 @@ app.get('/api/product/:id', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log('server'));
+app.listen(PORT, () => console.log('server run'));
