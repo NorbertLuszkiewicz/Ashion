@@ -72,7 +72,7 @@ const StyledParagraph = styled(Paragraph)`
   }
 `;
 
-const CartItem = ({ title, price, photo }) => (
+const CartItem = ({ title, price, photo, remote }) => (
   <Wrapper>
     <StyledImg src={photo} />
     <MobileWrapper>
@@ -83,14 +83,16 @@ const CartItem = ({ title, price, photo }) => (
       </StyledLabel>
       <Price>{price}</Price>
     </MobileWrapper>
-    <StyledButton>X</StyledButton>
+    <StyledButton onClick={remote}>X</StyledButton>
   </Wrapper>
 );
 
 CartItem.propTypes = {
   title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
+  remote: PropTypes.func.isRequired,
 };
 
 export default CartItem;
