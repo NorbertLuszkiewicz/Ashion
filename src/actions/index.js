@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookie from 'js-cookie';
 import {
   WOMEN_PRODUCT_LIST_REQUEST,
   WOMEN_PRODUCT_LIST_SUCCESS,
@@ -15,6 +16,8 @@ import {
   DETAILS_PRODUCT_REQUEST,
   DETAILS_PRODUCT_SUCCESS,
   DETAILS_PRODUCT_FAILURE,
+  ADD_PRODUCT,
+  CART_REMOVE_ITEM,
 } from 'reducers';
 
 export const cardsList = () => async (dispatch) => {
@@ -47,16 +50,6 @@ export const womenProductsList = () => async (dispatch) => {
   }
 };
 
-export const cartList = () => async (dispatch) => {
-  try {
-    dispatch({ type: CART_LIST_REQUEST });
-    const { data } = await axios.get('/api/carts');
-    dispatch({ type: CART_LIST_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({ type: CART_LIST_FAILURE, payload: error.message });
-  }
-};
-
 export const detailsProduct = (productId) => async (dispatch) => {
   try {
     dispatch({ type: DETAILS_PRODUCT_REQUEST, payload: productId });
@@ -65,4 +58,33 @@ export const detailsProduct = (productId) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: DETAILS_PRODUCT_FAILURE, payload: error.message });
   }
+};
+
+export const addToCart = (productId) => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.get(`/api/product/${productId}`);
+    dispatch({
+      type: ADD_PRODUCT,
+      payload: {
+        id: productId,
+        title: data.title,
+        photo: data.photo,
+        price: data.price,
+      },
+    });
+
+    const {
+      cart: { cartItems },
+    } = getState();
+    Cookie.set('cartItems', JSON.stringify(cartItems));
+  } catch (error) {}
+};
+
+export const removeFromCart = (productId) => (dispatch, getState) => {
+  dispatch({ type: CART_REMOVE_ITEM, payload: productId });
+
+  const {
+    cart: { cartItems },
+  } = getState();
+  Cookie.set('cartItems', JSON.stringify(cartItems));
 };
