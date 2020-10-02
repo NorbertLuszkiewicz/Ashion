@@ -1,19 +1,22 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
+import Cookie from 'js-cookie';
 import {
   bestProductListReducer,
   womenProductListReducer,
   cardListReducer,
-  cartListReducer,
   productDetailsReducer,
+  AaddToCartReducer,
 } from 'reducers';
 import thunk from 'redux-thunk';
 
-const initialState = {};
+const cartItems = Cookie.getJSON('cartItems') || [];
+
+const initialState = { cart: { cartItems } };
 const reducer = combineReducers({
   bestProductList: bestProductListReducer,
   womenProductList: womenProductListReducer,
   cardList: cardListReducer,
-  cartList: cartListReducer,
+  cart: AaddToCartReducer,
   productDetails: productDetailsReducer,
 });
 

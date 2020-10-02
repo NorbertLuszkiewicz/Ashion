@@ -18,6 +18,10 @@ export const DETAILS_PRODUCT_REQUEST = 'DETAILS_PRODUCT_REQUEST';
 export const DETAILS_PRODUCT_SUCCESS = 'DETAILS_PRODUCT_SUCCESS';
 export const DETAILS_PRODUCT_FAILURE = 'DETAILS_PRODUCT_FAILURE';
 
+export const CART_REMOVE_ITEM = 'CART_REMOVE_ITEM';
+
+export const ADD_PRODUCT = 'DETAILS_PRODUCT';
+
 export function bestProductListReducer(state = { bestProducts: [] }, action) {
   switch (action.type) {
     case BEST_PRODUCT_LIST_REQUEST:
@@ -78,6 +82,22 @@ export function productDetailsReducer(state = { product: {} }, action) {
       return { loading: false, product: action.payload };
     case DETAILS_PRODUCT_FAILURE:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+}
+
+export function AaddToCartReducer(state = { cartItems: [] }, action) {
+  switch (action.type) {
+    case ADD_PRODUCT:
+      const item = action.payload;
+      const product = state.cartItems.find((x) => x.id === item.id);
+      if (product) {
+        return { cartItems: state.cartItems.map((x) => (x.id === product.id ? product : x)) };
+      } else return { cartItems: [...state.cartItems, item] };
+
+    case CART_REMOVE_ITEM:
+      return { cartItems: state.cartItems.filter((x) => x.id !== action.payload) };
     default:
       return state;
   }
