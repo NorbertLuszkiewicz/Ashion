@@ -67,6 +67,10 @@ const ProductPage = (props) => {
   const { product, loading, error } = productDetails;
   const dispatch = useDispatch();
 
+  const handleAddToCart = () => {
+    props.history.push(`/cart/${props.match.params.id}`);
+  };
+
   useEffect(() => {
     dispatch(detailsProduct(props.match.params.id));
   }, [dispatch, props.match.params.id]);
@@ -79,13 +83,13 @@ const ProductPage = (props) => {
     <PageTemplate>
       <Wrapper>
         <StyledSection>
-          <StyledImg src={product.photo} alt="Black Hooded jacket" />
+          <StyledImg src={product.photo} alt={product.photo} />
           <TitleWrapper>
             <Title>{product.title}</Title>
             <Price>
               Price:<StyledStrong>{product.price}</StyledStrong>
             </Price>
-            <StyledButton>Add to cart</StyledButton>
+            <StyledButton onClick={handleAddToCart}>Add to cart</StyledButton>
           </TitleWrapper>
         </StyledSection>
         <StyledSection>
