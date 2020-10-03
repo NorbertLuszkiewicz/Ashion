@@ -184,6 +184,7 @@ const WomenPage = () => {
                     photo={item.photo}
                     color={item.color}
                     label={item.label}
+                    id={item.id}
                     key={item.photo}
                   />
                 );

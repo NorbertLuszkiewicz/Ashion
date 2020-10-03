@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from 'components/atoms/Button/Button';
@@ -39,20 +39,17 @@ const StyledImg = styled.img`
 
 const StyledButton = styled(Button)`
   transform: translateY(100%);
-  background-color: red;
-  color: white;
+  background-color: none;
+  border: 1px solid #666;
   font-weight: bold;
   width: 30px;
   height: 35px;
 `;
 
 const StyledLabel = styled.label`
-  width: 50px;
+  width: 100px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-items: center;
-  text-align: center;
 `;
 
 const StyledInput = styled.input`
@@ -61,6 +58,8 @@ const StyledInput = styled.input`
   flex-direction: column;
   text-align: center;
   font-size: ${({ theme }) => theme.fontSize.s};
+  border: none;
+  border-bottom: 1px solid black;
 `;
 
 const StyledParagraph = styled(Paragraph)`
@@ -72,25 +71,43 @@ const StyledParagraph = styled(Paragraph)`
   }
 `;
 
-const CartItem = ({ title, price, photo, remote }) => (
-  <Wrapper>
-    <StyledImg src={photo} />
-    <MobileWrapper>
-      <Title>{title}</Title>
-      <StyledLabel>
-        <StyledParagraph>QTY</StyledParagraph>
-        <StyledInput type="number" value="1" />
-      </StyledLabel>
-      <Price>{price}</Price>
-    </MobileWrapper>
-    <StyledButton onClick={remote}>X</StyledButton>
-  </Wrapper>
-);
+const QtyButton = styled.button`
+  background: none;
+  border: none;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  font-weight: 300;
+`;
+
+const CartItem = ({ title, price, photo, remote }) => {
+  const [qty, setQty] = useState(1);
+
+  console.log();
+
+  return (
+    <Wrapper>
+      <StyledImg src={photo} />
+      <MobileWrapper>
+        <Title>{title}</Title>
+        <StyledLabel>
+          <StyledParagraph>QTY</StyledParagraph>
+          <QtyButton onClick={() => setQty(qty > 1 ? qty - 1 : 1)}> {'<'} </QtyButton>
+          <StyledInput
+            type="number"
+            value={qty}
+            onChange={(e) => setQty(e.target.value != 0 ? e.target.value : 1)}
+          />
+          <QtyButton onClick={() => setQty(Number(qty) + 1)}> {'>'} </QtyButton>
+        </StyledLabel>
+        <Price>${price * qty}</Price>
+      </MobileWrapper>
+      <StyledButton onClick={remote}>X</StyledButton>
+    </Wrapper>
+  );
+};
 
 CartItem.propTypes = {
   title: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   photo: PropTypes.string.isRequired,
   remote: PropTypes.func.isRequired,
 };
