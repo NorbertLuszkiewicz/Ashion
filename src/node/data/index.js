@@ -51,30 +51,35 @@ export const bestProducts = [
     color: 'green',
     label: 'NEW',
     id: 1,
+    cost: 59,
   },
   {
     title: 'Flowy striped skirt',
     price: '$49.0',
     photo: 'https://i.imgur.com/pblC7oL.jpg',
     id: 2,
+    cost: 49,
   },
   {
     title: 'Lite slim dress',
     price: '$59.0',
     photo: 'https://i.imgur.com/BaGqC8G.jpg',
     id: 3,
+    cost: 59,
   },
   {
     title: 'Slim striped pocket shirt',
     price: '$59.0',
     photo: 'https://i.imgur.com/2zriZTk.jpg',
     id: 4,
+    cost: 59,
   },
   {
     title: 'Fit micro corduroy shirt',
     price: '$59.0',
     photo: 'https://i.imgur.com/AJQDDAw.jpg',
     id: 5,
+    cost: 59,
   },
   {
     title: 'Tropical Kimono',
@@ -83,12 +88,14 @@ export const bestProducts = [
     color: 'red',
     label: 'SALE',
     id: 6,
+    cost: 49,
   },
   {
     title: 'White bluse',
     price: '$59.0',
     photo: 'https://i.imgur.com/HfiIhUZ.jpg',
     id: 7,
+    cost: 59,
   },
   {
     title: 'Tropical shirt',
@@ -97,6 +104,7 @@ export const bestProducts = [
     color: 'red',
     label: 'SALE',
     id: 8,
+    cost: 49,
   },
 ];
 
