@@ -10,9 +10,6 @@ import {
   BEST_PRODUCT_LIST_REQUEST,
   BEST_PRODUCT_LIST_SUCCESS,
   BEST_PRODUCT_LIST_FAILURE,
-  CART_LIST_REQUEST,
-  CART_LIST_SUCCESS,
-  CART_LIST_FAILURE,
   DETAILS_PRODUCT_REQUEST,
   DETAILS_PRODUCT_SUCCESS,
   DETAILS_PRODUCT_FAILURE,
@@ -69,7 +66,7 @@ export const addToCart = (productId) => async (dispatch, getState) => {
         id: productId,
         title: data.title,
         photo: data.photo,
-        price: data.price,
+        price: data.cost,
       },
     });
 
