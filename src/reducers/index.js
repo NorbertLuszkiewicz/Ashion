@@ -10,10 +10,6 @@ export const CARD_LIST_REQUEST = 'CARD_LIST_REQUEST';
 export const CARD_LIST_SUCCESS = 'CARD_LIST_SUCCESS';
 export const CARD_LIST_FAILURE = 'CARD_LIST_FAILURE';
 
-export const CART_LIST_REQUEST = 'CART_LIST_REQUEST';
-export const CART_LIST_SUCCESS = 'CART_LIST_SUCCESS';
-export const CART_LIST_FAILURE = 'CART_LIST_FAILURE';
-
 export const DETAILS_PRODUCT_REQUEST = 'DETAILS_PRODUCT_REQUEST';
 export const DETAILS_PRODUCT_SUCCESS = 'DETAILS_PRODUCT_SUCCESS';
 export const DETAILS_PRODUCT_FAILURE = 'DETAILS_PRODUCT_FAILURE';
@@ -55,19 +51,6 @@ export function womenProductListReducer(state = { products: [] }, action) {
     case WOMEN_PRODUCT_LIST_SUCCESS:
       return { loading: false, products: action.payload };
     case WOMEN_PRODUCT_LIST_FAILURE:
-      return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
-}
-
-export function cartListReducer(state = { products: [] }, action) {
-  switch (action.type) {
-    case CART_LIST_REQUEST:
-      return { loading: true };
-    case CART_LIST_SUCCESS:
-      return { loading: false, products: action.payload };
-    case CART_LIST_FAILURE:
       return { loading: false, error: action.payload };
     default:
       return state;
