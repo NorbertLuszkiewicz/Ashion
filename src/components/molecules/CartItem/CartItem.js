@@ -94,7 +94,7 @@ const CartItem = ({ title, price, photo, remote }) => {
           <StyledInput
             type="number"
             value={qty}
-            onChange={(e) => setQty(e.target.value != 0 ? e.target.value : 1)}
+            onChange={(e) => setQty(e.target.value !== 0 ? e.target.value : 1)}
           />
           <QtyButton onClick={() => setQty(Number(qty) + 1)}> {'>'} </QtyButton>
         </StyledLabel>

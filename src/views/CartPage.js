@@ -50,7 +50,7 @@ const CartPage = (props) => {
     if (productId) {
       dispatch(addToCart(productId));
     }
-  }, [dispatch]);
+  }, [productId, dispatch]);
 
   return (
     <PageTemplate>
